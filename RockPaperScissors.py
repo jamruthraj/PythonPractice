@@ -35,24 +35,30 @@ print("This game of rock, paper, scissors is a race to 3. First one to win three
 while nn < 3 and mm < 3:
     print("Enter 1 to select Rock, 2 to select paper, 3 to select scissor")
     n = int(input())
+    while(True):
+        if n < 1 or n > 3:
+            n = int(input("Enter either 1, 2 ro 3: "))
+        else:
+            break
     m = random.randint(1, 3)
     print("You selected: ", end="")
     dis(n)
     print("Computer selected: ", end="")
     dis(m)
     if (result(n, m) == n):
-        print("You won")
+        print("You won this round")
         nn += 1
     elif (result(n, m) == m):
-        print("You Lost")
+        print("You Lost this round")
         mm += 1
     else:
         print("Tie Round")
     print("Scores", nn, ":", mm)
+    print("\n")
 
 print("\n\n")
 
 if (nn == 3):
     print("Good Job! You've won")
 else:
-    print("Better luck next time")
+    print("Oh No! Better luck next time")
