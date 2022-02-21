@@ -1,6 +1,7 @@
 import random
 
-words = ["apple", "mango", "orange", "watermelon", "papaya", "guava", "kiwi", "grapes"]
+words = ["apple", "mango", "orange", "watermelon", "papaya", "guava", "kiwi", "grapes",
+         "mercedes", "ford", "bottle", "mouse",  "phone", "remote", "charger", "brush"]
 
 
 def blanks(s):
@@ -35,6 +36,12 @@ def play(bw, nw, nb):
     tries = 5
     while tries > 0 or nb > 0:
         pos = int(input("Enter the position, where you want to guess the letter: "))
+        while(True):
+            if bw[pos-1] != "_" or pos > len(bw):
+                pos = int(
+                    input("Enter only the position of blank where you want to guess the letter"))
+            else:
+                break
         let = input("Enter the letter: ").lower()
         if nw[pos - 1] == let:
             print("Correct Guess")
@@ -54,18 +61,19 @@ def play(bw, nw, nb):
 print("--------------Hangman-------------")
 while True:
     word = words[random.randint(0, len(words) - 1)]
-    print("You will have 5 guesses to guess all the letters")
-    print("You have to guess the missing letters and complete the name of the fruit given below")
+    print("You will have 5 guesses to guess all the missing letters")
+    print("You have to guess the missing letters and complete the word given below")
     w = blanks(word)
     display(w)
     res = play(w, word, nob(w))
     if res:
         print("You ran out of tries :(")
     else:
-        print("Yay! You guesses the letters of fruit correctly")
+        print("Yay! You guesses the letters of the word correctly")
     ch = int(input("Press 1 if you want to play again, 2 if you want to quit: "))
     if ch == 1:
         continue
     break
 
 print("Thanks for playing")
+
