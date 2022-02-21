@@ -39,7 +39,7 @@ def play(bw, nw, nb):
         while(True):
             if bw[pos-1] != "_" or pos > len(bw):
                 pos = int(
-                    input("Enter only the position of blank where you want to guess the letter"))
+                    input("Enter only the position of blank where you want to guess the letter: "))
             else:
                 break
         let = input("Enter the letter: ").lower()
